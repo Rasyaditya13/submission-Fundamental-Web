@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  font-family: "Poppins", serif;
+  font-style: normal;
+  background-color: #f6eacb;
+}
+
+.note-item {
+  border: 1px solid #d1e9f6;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #eecad5;
+  box-shadow: 9px 15px 25px -13px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: 9px 15px 25px -13px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 9px 15px 25px -13px rgba(0, 0, 0, 0.63);
+  transition: transform 0.3s;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-item:hover {
+  transform: scale(1.02);
+}
+
+.note-item h2 {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #d1e9f6;
+}
+
+.note-item p {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-item small {
+  color: tomato;
+}
+
+#notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+button {
+  background-color: #f1d3ce;
+  border: none;
+  padding: 10px 15px;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #eecad5;
+}
+
+#note-form {
+  background-color: #ffffff;
+  border: 1px solid #d1e9f6;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1em;
+  background-color: #f6eacb; 
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: #d1e9f6;
+  outline: none;
+  box-shadow: 0 0 8px rgba(209, 233, 246, 0.3);
+}
+
+button[type="submit"] {
+  background-color: #f1d3ce;
+  border: none;
+  padding: 10px 20px;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #eecad5;
+}
+
+.titlei {
+  display: flex;
+  justify-content: center;
+}
