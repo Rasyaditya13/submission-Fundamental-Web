@@ -39,8 +39,9 @@ body {
 
 .note-item p {
   flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-height: 120px; /* Batasi tinggi teks */
+  overflow: auto; /* Tambahkan scroll jika teks terlalu panjang */
+  padding-right: 5px;
 }
 
 .note-item small {
