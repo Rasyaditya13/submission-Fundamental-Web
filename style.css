@@ -39,8 +39,8 @@ body {
 
 .note-item p {
   flex-grow: 1;
-  max-height: 120px; /* Batasi tinggi teks */
-  overflow: auto; /* Tambahkan scroll jika teks terlalu panjang */
+  max-height: 120px;
+  overflow: auto; 
   padding-right: 5px;
 }
 
