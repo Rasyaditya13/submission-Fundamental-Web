@@ -1,3 +1,5 @@
+import './style.css';
+
 const notesList = document.getElementById("notes-list");
 
 async function fetchNotes() {
@@ -118,7 +120,7 @@ function hideLoading() {
 
 class AppHeader extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `<h1 class="title">Daftar Catatan</h1>`;
+    this.innerHTML = `<h1 class="titlei">Daftar Catatan</h1>`;
   }
 }
 customElements.define("app-header", AppHeader);
