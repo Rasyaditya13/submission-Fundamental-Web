@@ -1,6 +1,24 @@
-import './style.css';
+import './components/styles/style.css';
+import './components/app-header.js';
+import './components/note-form.js';
+import './components/note-item.js';
+import './components/loading-indicator.js';
 
 const notesList = document.getElementById("notes-list");
+
+function showLoading() {
+  if (!document.querySelector("loading-indicator")) {
+    const loadingIndicator = document.createElement("loading-indicator");
+    document.body.appendChild(loadingIndicator);
+  }
+}
+
+function hideLoading() {
+  const loadingIndicator = document.querySelector("loading-indicator");
+  if (loadingIndicator) {
+    document.body.removeChild(loadingIndicator);
+  }
+}
 
 async function fetchNotes() {
   showLoading();
@@ -24,48 +42,7 @@ function displayNotes(notes) {
   });
 }
 
-class NoteItem extends HTMLElement {
-  set note(data) {
-    this.innerHTML = `
-      <div class="note-item">
-        <h2>${data.title}</h2>
-        <p>${data.body}</p>
-        <small>${new Date(data.createdAt).toLocaleDateString()}</small>
-        <button class="delete-btn" data-id="${data.id}">Hapus</button>
-      </div>
-    `;
-    this.querySelector(".delete-btn").addEventListener("click", () => deleteNote(data.id));
-  }
-}
-customElements.define("note-item", NoteItem);
-
-class NoteForm extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <form id="note-form">
-        <div class="form-group">
-          <label for="title">Judul Catatan:</label>
-          <input type="text" id="title" placeholder="Masukkan Judul " required>
-        </div>
-        <div class="form-group">
-          <label for="body">Isi Catatan:</label>
-          <textarea id="body" rows="5" placeholder="Masukkan Catatan" required></textarea>
-        </div>
-        <button type="submit">Tambahkan Catatan</button>
-      </form>
-    `;
-    this.querySelector("form").addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const title = this.querySelector("#title").value;
-      const body = this.querySelector("#body").value;
-      await addNote({ title, body });
-      this.querySelector("form").reset();
-    });
-  }
-}
-customElements.define("note-form", NoteForm);
-
-async function addNote(note) {
+export async function addNote(note) {
   showLoading();
   try {
     await fetch("https://notes-api.dicoding.dev/v2/notes", {
@@ -83,7 +60,7 @@ async function addNote(note) {
   }
 }
 
-async function deleteNote(id) {
+export async function deleteNote(id) {
   showLoading();
   try {
     await fetch(`https://notes-api.dicoding.dev/v2/notes/${id}`, {
@@ -97,32 +74,6 @@ async function deleteNote(id) {
   }
 }
 
-class LoadingIndicator extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = '<div id="loading" class="loading">Loading...</div>';
-  }
-}
-customElements.define("loading-indicator", LoadingIndicator);
-
-function showLoading() {
-  if (!document.querySelector("loading-indicator")) {
-    const loadingIndicator = document.createElement("loading-indicator");
-    document.body.appendChild(loadingIndicator);
-  }
-}
-
-function hideLoading() {
-  const loadingIndicator = document.querySelector("loading-indicator");
-  if (loadingIndicator) {
-    document.body.removeChild(loadingIndicator);
-  }
-}
-
-class AppHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<h1 class="titlei">Daftar Catatan</h1>`;
-  }
-}
-customElements.define("app-header", AppHeader);
-
-fetchNotes();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchNotes();
+});
